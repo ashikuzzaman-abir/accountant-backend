@@ -7,6 +7,7 @@ module.exports = (req, res, next) => {
         req.userData = decoded;
         next();
     } catch (err) {
+        // console.log(err);
         return res.status(401).json({
             message: "you haven't loged in",
             error: err,
