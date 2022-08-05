@@ -13,7 +13,7 @@ router.get("/monthlysale/:storeid", authCheck, async (req, res, next) => {
 		if (req.query.month) {
 			currentMonth = req.query.month;
 		}
-		sql = `select * from entries where storeId= '${req.params.storeid}' and MONTH(entryTime) = '${currentMonth}'`;
+		sql = `select * from entries where storeId= '${req.params.storeid}' and MONTH(entryTime) = '${currentMonth}' and status = 'accepted'`;
 		serverReturn = await queryPasser(sql);
 		records = await JSON.stringify(serverReturn);
 		let parsed = await JSON.parse(records);
